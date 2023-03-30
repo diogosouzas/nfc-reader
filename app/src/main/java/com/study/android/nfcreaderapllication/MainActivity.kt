@@ -17,14 +17,14 @@ class MainActivity : AppCompatActivity(), NfcAdapter.ReaderCallback {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        //Obtein a reference
+        //Obtain a reference
         nfcAdapter = NfcAdapter.getDefaultAdapter(this)
     }
 
     override fun onResume() {
         super.onResume()
 
-        // Register this actitivy for receive NFC tags
+        // Register this activity for receive NFC tags
         nfcAdapter?.enableReaderMode(
             this,
             this,
@@ -41,10 +41,10 @@ class MainActivity : AppCompatActivity(), NfcAdapter.ReaderCallback {
     }
 
     override fun onTagDiscovered(tag: android.nfc.Tag?) {
-        // Obtein a Ndef king object, if the NFC tag is Ndef kind
+        // Obtain a Ndef king object, if the NFC tag is Ndef kind
         val ndef = Ndef.get(tag)
         if (ndef != null) {
-            // Obtein NFC tag value as a NdefMessage object
+            // Obtain NFC tag value as a NdefMessage object
             val ndefMessage = ndef.ndefMessage
 
             // Convert value in a String
